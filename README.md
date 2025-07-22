@@ -98,7 +98,6 @@ Then open: [http://localhost:3000](http://localhost:3000)
 - [ ] User authentication
 - [ ] Shareable dashboards
 - [ ] Drag-and-drop task ordering
-- [ ] AI-powered task prioritization
 
 ---
 

@@ -24,7 +24,7 @@ export default function EditTaskModal({ task, open, onClose, onUpdate }: Props) 
 
     const handleSubmit = async () => {
         console.log(task._id)
-        const res = await fetch(`/api/tasks/${task._id}`, {
+        const res = await fetch(`/api/tasks?taskId=${task._id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedTask),

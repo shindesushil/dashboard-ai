@@ -128,7 +128,7 @@ export default function DashboardPage({ params }: { params: Promise<{ id: string
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const res = await fetch(`/api/dashboards/${id}`)
+                const res = await fetch(`/api/tasks?dashboardId=${id}`)
                 const data = await res.json()
                 if (data.success) {
                     setTasks(data.tasks)
@@ -159,119 +159,7 @@ export default function DashboardPage({ params }: { params: Promise<{ id: string
         (category) => dashboardTasks.filter((t) => t.category === category).length
     )
 
-    // return (
-    //     <div className='flex flex-row gap-3 pe-6'>
-    //         <div className='flex flex-col gap-1.5 min-w-1/3'>
-    //             <div className='bg-white p-4 rounded-lg flex gap-1.5'>
-    //                 <Hourglass className='text-red-400'/>
-    //                 <p>Pending</p>
-    //             </div>
-    //             {
-    //                 tasks.map((task: TaskType) => {
-    //                     if(task.status === 'pending' && task.dashboardId === id) {
-    //                         return (
-    //                             <Card key={task.id} className='border-l-8 border-l-red-400'>
-    //                                 <CardHeader>
-    //                                     <CardTitle>{task.name}</CardTitle>
-    //                                     <CardDescription>{task.description}</CardDescription>
-    //                                     <CardAction>
-    //                                         <Edit className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer" />
-    //                                     </CardAction>
-    //                                 </CardHeader>
-    //                                 <CardContent>
-    //                                     <div className='flex flex-col'>
-    //                                         <div className='flex flex-row gap-2 text-red-400'>
-    //                                             <p>Status: </p>
-    //                                             <p className=''>{task.status.toUpperCase()}</p>
-    //                                         </div>
-    //                                         <div className='flex flex-row gap-2 text-blue-400'>
-    //                                             <p>Category: </p>
-    //                                             <p className=''>{task.category}</p>
-    //                                         </div>
-    //                                     </div>
-    //                                     <p className='pt-2'>{task.description}</p>
-    //                                 </CardContent>
-    //                             </Card>
-    //
-    //                         )
-    //                     }
-    //                 })
-    //             }
-    //         </div>
-    //         <div className='flex flex-col gap-1.5 min-w-1/3'>
-    //             <div className='bg-white p-4 rounded-lg flex gap-1.5'>
-    //                 <Braces className='text-blue-400' />
-    //                 <p>In Progress</p>
-    //             </div>
-    //             {
-    //                 tasks.map((task: TaskType) => {
-    //                     if(task.status === 'in progress' && task.dashboardId === id) {
-    //                         return (
-    //                             <Card key={task.id} className='border-l-8 border-l-blue-400'>
-    //                                 <CardHeader>
-    //                                     <CardTitle>{task.name}</CardTitle>
-    //                                     <CardDescription>{task.description}</CardDescription>
-    //                                     <CardAction>
-    //                                         <Edit className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer" />
-    //                                     </CardAction>
-    //                                 </CardHeader>
-    //                                 <CardContent>
-    //                                     <div className='flex flex-col'>
-    //                                         <div className='flex flex-row gap-2 text-blue-400'>
-    //                                             <p>Status: </p>
-    //                                             <p className=''>{task.status.toUpperCase()}</p>
-    //                                         </div>
-    //                                         <div className='flex flex-row gap-2 text-blue-400'>
-    //                                             <p>Category: </p>
-    //                                             <p className=''>{task.category}</p>
-    //                                         </div>
-    //                                     </div>
-    //                                     <p className='pt-2'>{task.description}</p>
-    //                                 </CardContent>
-    //                             </Card>
-    //                         )
-    //                     }
-    //                 })
-    //             }
-    //         </div>
-    //         <div className='flex flex-col gap-1.5 min-w-1/3'>
-    //             <div className='bg-white p-4 rounded-lg flex gap-1.5'>
-    //                 <CheckCheck className='text-green-400' />
-    //                 <p>Completed</p>
-    //             </div>
-    //             {
-    //                 tasks.map((task: TaskType) => {
-    //                     if(task.status === 'completed' && task.dashboardId === id) {
-    //                         return (
-    //                             <Card key={task.id} className='border-l-8 border-l-green-400'>
-    //                                 <CardHeader>
-    //                                     <CardTitle>{task.name}</CardTitle>
-    //                                     <CardDescription>{task.description}</CardDescription>
-    //                                     <CardAction>
-    //                                         <Edit className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer" />
-    //                                     </CardAction>
-    //                                 </CardHeader>
-    //                                 <CardContent>
-    //                                     <div className='flex flex-col'>
-    //                                         <div className='flex flex-row gap-2 text-green-400'>
-    //                                             <p>Status: </p>
-    //                                             <p className=''>{task.status.toUpperCase()}</p>
-    //                                         </div>
-    //                                         <div className='flex flex-row gap-2 text-blue-400'>
-    //                                             <p>Category: </p>
-    //                                             <p className=''>{task.category}</p>
-    //                                         </div>
-    //                                     </div>
-    //                                     <p className='pt-2'>{task.description}</p>
-    //                                 </CardContent>
-    //                             </Card>
-    //                         )
-    //                     }
-    //                 })
-    //             }
-    //         </div>
-    //     </div>
-    // )
+   
     return (
         <div>
             <div className="flex justify-end py-3">
